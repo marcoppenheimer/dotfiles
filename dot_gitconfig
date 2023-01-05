@@ -1,0 +1,10 @@
+[user]
+	name = Marc Oppenheimer
+	email = marcaoppenheimer@gmail.com
+[init]
+	defaultBranch = main
+[color]
+	ui = auto
+	status = auto
+[push]
+    autoSetupRemote = true

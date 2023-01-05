@@ -1,0 +1,121 @@
+#startup
+exec --no-startup-id hsetroot -solid '#0E0025'
+exec --no-startup-id feh --bg-scale ~/pictures/wallpapers/back.png
+exec_always --no-startup-id ~/.pyenv/shims/flashfocus
+exec_always --no-startup-id bluetoothctl power on
+
+#font
+font pango:DejaVu Sans Mono 0
+
+#mod key
+set $mod Mod4
+
+#title
+title_align center
+
+#floating
+floating_modifier $mod
+
+#default orientation
+default_orientation auto 
+
+#workspace_layout
+workspace_layout default 
+
+#default border style
+default_border none
+default_floating_border none
+smart_borders on
+hide_edge_borders smart_no_gaps
+
+#gaps
+gaps inner 10 
+
+#title
+for_window [all] title_window_icon on
+for_window [all] border pixel 0
+for_window [all] title_format "%instance"
+
+#window specific
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Pavucontrol"] resize set 1000 500
+for_window [class="File Transfer*"] floating enable move position center
+for_window [urgent=latest] focus
+for_window [window_role="Dialog*"] focus
+popup_during_fullscreen leave_fullscreen
+
+# start a terminal
+bindsym $mod+Return exec kitty
+bindsym $mod+n exec kitty --title "todo.md" -e nvim "$HOME/todo.md"; exec sleep 0.2
+bindsym $mod+p exec PATH=$HOME/.pyenv/shims:$PATH kitty --title "temp.py" -e nvim "$HOME/temp.py"; exec sleep 0.2
+
+# kill focused window
+bindsym $mod+q kill
+
+#rofi-launcher
+bindsym $mod+grave exec --no-startup-id "~/.config/rofi/rofi-launcher/launch.sh"
+#rofi-screenshot
+bindsym $mod+0 exec --no-startup-id "~/.config/rofi/rofi-screenshot/rofi-screenshot.sh"
+#rofi-screenshot
+bindsym $mod+9 exec --no-startup-id "~/.config/rofi/rofi-networkmanager/rofi-networkmanager.sh"
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+bindsym $mod+a focus parent
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+#layouts
+bindsym $mod+Tab split toggle
+bindsym $mod+t layout tabbed
+bindsym $mod+s layout stacked
+bindsym $mod+e layout default
+bindsym $mod+Escape fullscreen toggle
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+#resizing
+bindsym $mod+Ctrl+Left resize shrink width 15 px
+bindsym $mod+Ctrl+Down resize grow height 15 px
+bindsym $mod+Ctrl+Up resize shrink height 15 px
+bindsym $mod+Ctrl+Right resize grow width 15 px
+bindsym $mod+Ctrl+Shift+Left resize shrink width 1 px
+bindsym $mod+Ctrl+Shift+Down resize grow height 1 px
+bindsym $mod+Ctrl+Shift+Up resize shrink height 1 px
+bindsym $mod+Ctrl+Shift+Right resize grow width 1 px
+
+#workspaces
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
+
+# <colorclass> <border> <background> <text> <indicator> <child_border>
+client.focused          #44475a #282a36 #F8F8F2 #282a36 #44475a
+client.focused_inactive #44475a #21222c #F8F8F2 #21222c #44475a
+client.unfocused        #44475a #21222c #6272a4 #21222c #282a36
+client.urgent           #44475a #FF5555 #F8F8F2 #FF5555 #FF5555
+client.placeholder      #44475a #282A36 #F8F8F2 #282A36 #44475a
+client.background       #F8F8F2
