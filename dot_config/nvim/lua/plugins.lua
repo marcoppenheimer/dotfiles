@@ -37,6 +37,7 @@ require("packer").startup(
         use {"sindrets/diffview.nvim", requires = {"nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons"}}
         use({"nvim-lualine/lualine.nvim", config = get_setup("lualine")})
         use ({"lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"}, config = get_setup("gitsigns")})
+        use "epwalsh/obsidian.nvim"
         use ({
             "VonHeikemen/lsp-zero.nvim",
             requires = {
