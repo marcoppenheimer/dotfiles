@@ -27,6 +27,7 @@ vim.api.nvim_set_keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { noremap = true,
 -- nnn bindings
 vim.api.nvim_set_keymap('n', '<leader>ff', [[<cmd>NnnPicker %:p:h<CR>]], { noremap = true, silent = true })
 
+
 -- telescope bindings
 vim.api.nvim_set_keymap('n', '<leader>fb', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>sb', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]], { noremap = true, silent = true })
@@ -35,8 +36,14 @@ vim.api.nvim_set_keymap('n', '<leader>?', [[<cmd>lua require('telescope.builtin'
 vim.api.nvim_set_keymap('n', '<leader><Space>', [[<cmd>lua require('telescope.builtin').git_status()<CR>]], { noremap = true, silent = true })
 
 -- diffview bindings
-vim.api.nvim_set_keymap('n', '<leader>gg', [[<cmd>DiffviewOpen<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>gx', [[<cmd>DiffviewClose<CR>]], { noremap = true, silent = true })
+-- getting current origin/branch for diffview
+local handle = io.popen([[git status >/dev/null 2>&1 && git branch -r | grep -Po 'HEAD -> \K.*$']])
+local result = handle:read("*a")
+handle:close()
+
+vim.api.nvim_set_keymap('n', '<leader>do', string.format([[<cmd>DiffviewOpen %s<CR>]], result), { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>df', [[<cmd>DiffviewFileHistory %<CR>]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>dx', [[<cmd>DiffviewClose<CR>]], { noremap = true, silent = true })
 
 -- diagnostic
 vim.api.nvim_set_keymap('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', { noremap = true, silent = true })

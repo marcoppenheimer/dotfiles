@@ -43,4 +43,10 @@ vim.o.termguicolors = true
 -- completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
+-- scroll off
 vim.opt.scrolloff = 8
+
+-- fillchars
+vim.opt.fillchars:append("diff: ")
+
+
