@@ -55,6 +55,7 @@ require("packer").startup(
                 {"L3MON4D3/LuaSnip"},
                 {"rafamadriz/friendly-snippets"}
             }, config=get_setup("lsp-zero")})
+        use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
   if install_plugins then
     require('packer').sync()

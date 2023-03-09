@@ -54,3 +54,10 @@ function jswitch ()
     juju switch $model
 }  
 
+
+function jkill ()
+{
+    model=$(juju models | sed -e 's/\s.*$//' | grep $1 | sed 's/\*//')
+    juju destroy-model $model --force --no-wait --destroy-storage -y
+}  
+
