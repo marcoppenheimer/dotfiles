@@ -41,7 +41,8 @@ local handle = io.popen([[git status >/dev/null 2>&1 && git branch -r | grep -Po
 local result = handle:read("*a")
 handle:close()
 
-vim.api.nvim_set_keymap('n', '<leader>do', string.format([[<cmd>DiffviewOpen %s<CR>]], result), { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>DO', string.format([[<cmd>DiffviewOpen %s<CR>]], result), { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>do', [[<cmd>DiffviewOpen<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>df', [[<cmd>DiffviewFileHistory %<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>dx', [[<cmd>DiffviewClose<CR>]], { noremap = true, silent = true })
 

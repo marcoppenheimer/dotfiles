@@ -14,17 +14,11 @@ vim.o.splitright=true
 vim.o.splitbelow=true
 vim.opt.diffopt = vim.opt.diffopt + "vertical"
 
--- indent
-vim.o.autoindent=true
-
 -- highlight on search
 vim.o.hlsearch = false
 
 -- mouse mode
 vim.o.mouse = 'a'
-
--- break indent
-vim.o.breakindent = true
 
 -- undo history
 vim.opt.undofile = true
@@ -49,4 +43,10 @@ vim.opt.scrolloff = 8
 -- fillchars
 vim.opt.fillchars:append("diff: ")
 
-
+vim.filetype.add {
+    extension = {
+        tf = 'hcl',
+        tfvars = 'hcl',
+        tfstate = 'json',
+    }
+}

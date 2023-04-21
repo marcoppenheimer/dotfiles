@@ -18,7 +18,7 @@ lsp.configure(
         settings = {
             python = {
                 analysis = {
-                    extraPaths = {"./lib"}
+                    extraPaths = {"./lib", "./src"}
                 }
             }
         }
